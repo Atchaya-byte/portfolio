@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 255 255 255;
+  --bg-soft: 248 250 252;
+  --text: 15 23 42;
+  --text-soft: 71 85 105;
+  --border: 226 232 240;
+  --glass: 255 255 255;
+  --glass-border: 255 255 255;
+}
+
+.dark {
+  --bg: 8 10 24;
+  --bg-soft: 15 18 38;
+  --text: 226 232 240;
+  --text-soft: 148 163 184;
+  --border: 30 41 59;
+  --glass: 15 23 42;
+  --glass-border: 148 163 184;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--bg-soft));
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2563eb, #7c3aed);
+  border-radius: 999px;
+}
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(var(--glass) / 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(var(--glass-border) / 0.18);
+}
+
+.dark .glass {
+  background: rgba(var(--glass) / 0.5);
+  border: 1px solid rgba(var(--glass-border) / 0.12);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(120deg, #2563eb, #7c3aed, #06b6d4);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Animated background blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.dark .blob {
+  opacity: 0.35;
+}
+
+/* Skill bar fill */
+.skill-bar-fill {
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Typing cursor */
+.cursor {
+  display: inline-block;
+  width: 3px;
+  margin-left: 2px;
+  background: linear-gradient(180deg, #2563eb, #7c3aed);
+  animation: blink 1s step-end infinite;
+}
+
+/* Section heading underline */
+.heading-underline::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+}
